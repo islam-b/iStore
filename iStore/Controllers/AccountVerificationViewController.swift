@@ -13,9 +13,19 @@ class AccountVerificationViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        
     }
     
+    @IBAction func onConfirm(_ sender: Any) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let navVC = storyboard.instantiateViewController(withIdentifier: "MainNavController") as! UINavigationController
+        navVC.modalPresentationStyle = .fullScreen
+        self.present(navVC, animated: true)
 
+    }
+    
     /*
     // MARK: - Navigation
 
