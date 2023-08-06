@@ -14,28 +14,29 @@ class CategoryViewCell: UICollectionViewCell {
     
     @IBOutlet weak var icon: UIImageView!
     
+    @IBOutlet weak var iconContainer: UIView!
+    
     override func awakeFromNib() {
+         
         super.awakeFromNib()
         // Initialization code
+        _applyStyles()
     }
+   
     
-    func setLabel(label:String) {
-        self.label.text = label
+    func set(_ category:Category) {
+        self.label.text = category.label
+        self.icon.download(from: category.icon, fallback: #imageLiteral(resourceName: "CategoryPlaceholder"))
     }
 
-    func setIcon(url:String) {
-        URLSession.shared.dataTask(with: URL(string: url)!) { data, response , error in
-            if (data != nil) {
-                DispatchQueue.main.async() {
-                            self.icon.image = UIImage(data: data!)
-                        }
-            } else {
-                DispatchQueue.main.async() {
-                    self.icon.image = #imageLiteral(resourceName: "CategoryPlaceholder")
-
-                        }
-            }
-        }.resume()
+    
+    private func _applyStyles() {
+       
+        iconContainer.layer.shadowOpacity = 0.1 
+        iconContainer.layer.shadowOffset = CGSize(width: 0, height: 2)
+        iconContainer.layer.shadowRadius = 4.0
+        iconContainer.layer.shadowColor = UIColor.darkGray.cgColor
+        iconContainer.layer.cornerRadius = 28
     }
 
 }

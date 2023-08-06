@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct Category {
+ let label: String
+    let icon: String
+}

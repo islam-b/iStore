@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct Product {
+    let label: String
+    let brand: String
+    let priceUSD: Float
+    let imageUrl: String
+}
