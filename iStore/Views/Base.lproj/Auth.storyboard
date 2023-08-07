@@ -170,6 +170,7 @@
                     <navigationItem key="navigationItem" id="WsC-L2-98f"/>
                     <connections>
                         <outlet property="container" destination="Kla-A6-94O" id="kqN-yb-6b3"/>
+                        <segue destination="qSX-UF-bki" kind="show" identifier="VerificationSegue" id="Soz-jH-b5l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GqQ-c4-rIZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -204,6 +205,7 @@
                         <viewLayoutGuide key="safeArea" id="uab-zN-01j"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="gQD-WJ-e09"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0yY-JE-SZK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

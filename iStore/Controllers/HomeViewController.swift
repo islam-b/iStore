@@ -63,23 +63,27 @@ class HomeViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if (segue.identifier == "CategorySegue") {
+            let vc = segue.destination as! CategoryViewController
+            vc.categoryItem = sender as! Category
+        }
     }
-    */
+    
 
 }
 
  
 
 
-extension HomeViewController: UICollectionViewDataSource {
+extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
+    
+   
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch (collectionView) {
@@ -105,6 +109,33 @@ extension HomeViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        UIView.animate(withDuration: 0.2) {
+            cell?.layer.opacity = 0.5
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        UIView.animate(withDuration: 0.2) {
+            cell?.layer.opacity = 1.0
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch (collectionView) {
+        case categoriesCV :
+            let category = categories[indexPath.row]
+            performSegue(withIdentifier: "CategorySegue", sender: category)
+        case bestSellingCV:
+            print("test")
+            
+        default:
+            print("nothing")
+        }
     }
     
 }

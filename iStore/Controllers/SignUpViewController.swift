@@ -31,8 +31,9 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func onSignUp(_ sender: Any) {
-        let accountVerificationVC = storyboard?.instantiateViewController(withIdentifier: "AccountVerificationViewController") as! AccountVerificationViewController
-        self.navigationController?.pushViewController(accountVerificationVC, animated: true)
+       // let accountVerificationVC = storyboard?.instantiateViewController(withIdentifier: "AccountVerificationViewController") as! AccountVerificationViewController
+        //self.navigationController?.pushViewController(accountVerificationVC, animated: true)
+        performSegue(withIdentifier: "VerificationSegue", sender: nil)
     }
     
 
