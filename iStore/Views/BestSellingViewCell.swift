@@ -19,11 +19,15 @@ class BestSellingViewCell: UICollectionViewCell {
     
     @IBOutlet weak var price: UILabel!
     
+    
+    @IBOutlet weak var width: NSLayoutConstraint!
+    
+    @IBOutlet weak var height: NSLayoutConstraint!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         _applyStyles()
-
     }
     
     func set(_ product: Product) {

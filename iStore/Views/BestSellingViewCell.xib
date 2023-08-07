@@ -78,17 +78,17 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstItem="1gI-zw-JLa" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="44v-Gh-87J"/>
-                <constraint firstAttribute="bottom" secondItem="1gI-zw-JLa" secondAttribute="bottom" id="HqS-2U-axd"/>
                 <constraint firstItem="1gI-zw-JLa" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="nWH-gn-BKu"/>
-                <constraint firstAttribute="trailing" secondItem="1gI-zw-JLa" secondAttribute="trailing" id="xK1-W2-Icu"/>
             </constraints>
             <size key="customSize" width="200" height="300"/>
             <connections>
                 <outlet property="brand" destination="i6I-5C-a3B" id="11T-0n-bzl"/>
+                <outlet property="height" destination="vDu-92-vMi" id="CGH-wo-4c6"/>
                 <outlet property="image" destination="ckB-l1-fVV" id="m6u-mI-4DH"/>
                 <outlet property="imageContainer" destination="9LO-sI-4IE" id="Ttf-xG-kIE"/>
                 <outlet property="label" destination="koZ-ha-i8q" id="ksP-wu-Dbq"/>
                 <outlet property="price" destination="SKH-6j-xoq" id="2Ng-FT-7mN"/>
+                <outlet property="width" destination="sZN-J7-kiS" id="PPV-D0-XXZ"/>
             </connections>
             <point key="canvasLocation" x="140.45801526717557" y="37.323943661971832"/>
         </collectionViewCell>
