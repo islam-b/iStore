@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Category {
- let label: String
-    let icon: String
+struct Category: Decodable {
+    let id: Int
+    let label: String
+    let iconUrl: String
 }

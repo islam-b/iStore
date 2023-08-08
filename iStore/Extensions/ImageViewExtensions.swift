@@ -10,17 +10,24 @@ import UIKit
 
 extension UIImageView {
     
-    func download(from url: String, fallback: UIImage? = nil) {
-        URLSession.shared.dataTask(with: URL(string: url)!) { data, response , error in
-            if (data != nil) {
-                DispatchQueue.main.async() {
-                    self.image = UIImage(data: data!)
+    func download(from urlString: String, fallback: UIImage? = nil) {
+        if let url = URL(string: urlString) {
+            URLSession.shared.dataTask(with: url) { data, response , error in
+                if (data != nil) {
+                    DispatchQueue.main.async() {
+                        self.image = UIImage(data: data!)
+                    }
+                } else if (fallback != nil) {
+                    DispatchQueue.main.async() {
+                        self.image = fallback
+                    }
                 }
-            } else if (fallback != nil) {
-                DispatchQueue.main.async() {
-                    self.image = fallback
-                }
+            }.resume()
+        } else {
+            DispatchQueue.main.async() {
+                self.image = fallback
             }
-        }.resume()
+        }
+        
     }
 }

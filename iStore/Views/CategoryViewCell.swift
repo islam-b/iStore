@@ -26,7 +26,7 @@ class CategoryViewCell: UICollectionViewCell {
     
     func set(_ category:Category) {
         self.label.text = category.label
-        self.icon.download(from: category.icon, fallback: #imageLiteral(resourceName: "CategoryPlaceholder"))
+        self.icon.download(from: category.iconUrl, fallback: #imageLiteral(resourceName: "CategoryPlaceholder"))
     }
 
     

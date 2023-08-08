@@ -7,12 +7,17 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, CategoryServiceDelegate {
+ 
 
-    var categories : [Category] = []
+    
+    var categoryService = CategoryService()
+    
+    var categories : PagedResult<Category>?
     var bestSelling: [Product] = []
     
     @IBOutlet weak var categoriesCV: UICollectionView!
+    @IBOutlet weak var categoriesLoading: UIActivityIndicatorView!
     
     @IBOutlet weak var bestSellingCV: UICollectionView!
     
@@ -21,35 +26,45 @@ class HomeViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        registerViewCells()
+        registerViews()
         
-        initCategories()
+        categoryService.delegate = self
+        fetchCategories()
+        
         initBestSelling()
         
-       
+
+    }
+    
+    func fetchCategories() {
+        categoriesLoading.startAnimating()
+        categoryService.fetchCategories()
+    }
+    
+    
+    func handleError(_ error: Error) {
+        var alert = UIAlertController(title: error.title, message: error.message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+        DispatchQueue.main.async() {
+            self.present(alert, animated: true)
+        }
         
     }
     
-    func registerViewCells() {
+    func onCategoriesReceived(_ page: PagedResult<Category>) {
+        DispatchQueue.main.async() {
+            self.categoriesLoading.stopAnimating()
+            self.categories = page
+            self.categoriesCV.reloadData()
+        }
+    }
+    
+    
+    func registerViews() {
         categoriesCV.register(UINib(nibName: "CategoryViewCell", bundle: nil), forCellWithReuseIdentifier: "CategoryViewCell")
         bestSellingCV.register(UINib(nibName: "BestSellingViewCell", bundle: nil), forCellWithReuseIdentifier: "BestSellingViewCell")
     }
     
-    
-    func initCategories() {
-        categories = [
-            Category(label: "Hello", icon:"https://cdn-icons-png.flaticon.com/512/4804/4804045.png"),
-            Category(label: "World", icon:"https://cdn-icons-png.flaticon.com/512/4804/4804045.png"),
-            Category(label: "World", icon:"https://cdn-icons-png.flaticon.com/512/4804/4804045.png"),
-            Category(label: "World", icon:"https://cdn-icons-png.flaticon.com/512/4804/4804045.png"),
-            Category(label: "World", icon:"httpDs://cdn-icons-png.flaticon.com/512/4804/4804045.png"),
-            Category(label: "Hello", icon:"https://cdn-icons-png.flaticon.com/512/4804/4804045.png"),
-            Category(label: "World", icon:"https://cdn-icons-png.flaticon.com/512/4804/4804045.png"),
-            Category(label: "Hello", icon:"https://cdn-icons-png.flaticon.com/512/4804/4804045.png"),
-            Category(label: "World", icon:"https://cdn-icons-png.flaticon.com/512/4804/4804045.png"),
-        ]
-        categoriesCV.reloadData()
-    }
     
     
     func initBestSelling() {
@@ -87,7 +102,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch (collectionView) {
-        case categoriesCV : return categories.count
+        case categoriesCV : return categories?.totalCount ?? 0
         case bestSellingCV: return bestSelling.count
         default:
             return 0
@@ -98,7 +113,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         switch (collectionView) {
         case categoriesCV :
             let viewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryViewCell", for: indexPath) as! CategoryViewCell
-            viewCell.set(categories[indexPath.row])
+            viewCell.set((categories?.items[indexPath.row])!)
             return viewCell
         case bestSellingCV:
             let viewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "BestSellingViewCell", for: indexPath) as! BestSellingViewCell
@@ -128,7 +143,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch (collectionView) {
         case categoriesCV :
-            let category = categories[indexPath.row]
+            let category = categories?.items[indexPath.row]
             performSegue(withIdentifier: "CategorySegue", sender: category)
         case bestSellingCV:
             print("test")

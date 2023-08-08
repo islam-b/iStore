@@ -11,6 +11,8 @@ class BrandsHeader: UICollectionReusableView {
 
     private var _brands : [Brand] = []
     
+    var delegate: BrandsHeaderDelegate?
+    
     @IBOutlet weak var brandsCV: UICollectionView!
     
     override func awakeFromNib() {
@@ -29,6 +31,13 @@ class BrandsHeader: UICollectionReusableView {
 
 
 extension BrandsHeader : UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let brand = _brands[indexPath.row]
+        if (delegate != nil) {
+            delegate?.onSelectBrand(brand: brand)
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return _brands.count
@@ -54,4 +63,9 @@ extension BrandsHeader : UICollectionViewDataSource, UICollectionViewDelegate {
         }
     }
     
+}
+
+
+protocol BrandsHeaderDelegate {
+    func onSelectBrand(brand: Brand) -> Void
 }

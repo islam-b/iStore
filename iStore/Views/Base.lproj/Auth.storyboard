@@ -81,6 +81,9 @@
                                         <rect key="frame" x="0.0" y="288.66666666666669" width="345" height="34.333333333333314"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Sign in"/>
+                                        <connections>
+                                            <action selector="onSignIn:" destination="Dqj-dt-L9N" eventType="touchUpInside" id="Kef-i8-Nwn"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -99,11 +102,14 @@
                     </navigationItem>
                     <connections>
                         <outlet property="container" destination="k1e-pM-ExM" id="rGJ-DM-qlx"/>
+                        <outlet property="emailInput" destination="mgr-xB-9eV" id="v4p-Zw-m0l"/>
+                        <outlet property="passwordInput" destination="3uN-yS-Yfd" id="vP5-3f-Oeb"/>
+                        <outlet property="signInBtn" destination="StL-vG-25u" id="1Jn-je-8W4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0PT-z0-SVn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1073" y="4"/>
+            <point key="canvasLocation" x="1072.5190839694656" y="3.5211267605633805"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="ZSh-qF-o6V">

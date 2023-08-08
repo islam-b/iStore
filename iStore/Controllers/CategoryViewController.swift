@@ -47,16 +47,23 @@ class CategoryViewController: UIViewController {
         productsCV.register(UINib(nibName: "BrandsHeader", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "BrandsHeader")
     }
 
-    /*
+    
     // MARK: - Navigation
+    
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if (segue.identifier == "BrandSegue") {
+            let brand = sender as! Brand
+            let brandVC = segue.destination as! BrandViewController
+            brandVC.brand = brand
+        }
     }
-    */
     
+    
+    
+    // MARK: - Styles
+
     private func _applyStyles() {
         let searchBtnView = UIButton(frame: CGRect(x: 0, y: 0, width: 36, height: 36))
         searchBtnView.setTitle("", for: .normal)
@@ -72,7 +79,6 @@ class CategoryViewController: UIViewController {
 
 
 extension CategoryViewController : UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -96,6 +102,7 @@ extension CategoryViewController : UICollectionViewDataSource, UICollectionViewD
         if (kind == UICollectionView.elementKindSectionHeader) {
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "BrandsHeader", for: indexPath) as! BrandsHeader
             headerView.loadData(brands: brands)
+            headerView.delegate = self
             return headerView
         } else {
             assert(false, "Unexpected element kind")
@@ -121,6 +128,15 @@ extension CategoryViewController : UICollectionViewDataSource, UICollectionViewD
     
     func getCellHeight() -> CGFloat {
         return 300.0
+    }
+    
+}
+
+
+extension CategoryViewController : BrandsHeaderDelegate {
+    
+    func onSelectBrand(brand: Brand) {
+        performSegue(withIdentifier: "BrandSegue", sender: brand)
     }
     
 }
