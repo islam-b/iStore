@@ -38,6 +38,7 @@ class BestSellingViewCell: UICollectionViewCell {
     }
     
     private func _applyStyles() {
+        image.layer.cornerRadius = 10
         imageContainer.layer.cornerRadius = 8
         imageContainer.layer.borderWidth = 1
         imageContainer.layer.borderColor = UIColor.systemGray6.cgColor

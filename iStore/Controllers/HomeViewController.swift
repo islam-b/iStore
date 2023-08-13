@@ -70,6 +70,8 @@ class HomeViewController: UIViewController, CategoryServiceDelegate {
     func initBestSelling() {
         bestSelling = [
                 Product(label: "BeoPlay Speaker", brand: "Band and Olufsen", priceUSD: 755, imageUrl: "https://store.sony.com.au/dw/image/v2/ABBC_PRD/on/demandware.static/-/Sites-sony-master-catalog/default/dwa71c960c/images/SRSXB13B/SRSXB13B.png"),
+                Product(label: "Tennis Balls", brand: "Wilson", priceUSD: 755, imageUrl: "https://nwscdn.com/media/catalog/product/c/l/classic-tour-tennis-balls.jpg"),
+                
                 Product(label: "Leather Wristwatch", brand: "Tag Heure", priceUSD: 450, imageUrl: "https://cdn.shopify.com/s/files/1/0304/3821/products/Currensmartwatch218.jpg?v=1655203460"),
                 Product(label: "BeoPlay Speaker", brand: "Band and Olufsen", priceUSD: 755, imageUrl: "https://www.philips.co.in/c-dam/b2c/category-pages/sound-and-vision/portable-audio/in/wireless-speakers/TAS1505B-hero-product-image.jpg"),
                 Product(label: "Leather Wristwatch", brand: "Tag Heure", priceUSD: 450, imageUrl: "https://cdn.shopify.com/s/files/1/0304/3821/products/Currensmartwatch218.jpg?v=1655203460"),
@@ -86,10 +88,19 @@ class HomeViewController: UIViewController, CategoryServiceDelegate {
         if (segue.identifier == "CategorySegue") {
             let vc = segue.destination as! CategoryViewController
             vc.categoryItem = sender as! Category
+        } else if (segue.identifier == "ProductSegue") {
+            let vc = segue.destination as! ProductViewController
+            vc.product = sender as! Product
         }
     }
     
-
+    
+    @IBAction func onCameraOpen(_ sender: Any) {
+//        let cameraVC = UIImagePickerController()
+//        cameraVC.sourceType = UIImagePickerController.SourceType.camera
+//        present(cameraVC, animated: true, completion: nil)
+    }
+    
 }
 
  
@@ -146,8 +157,8 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             let category = categories?.items[indexPath.row]
             performSegue(withIdentifier: "CategorySegue", sender: category)
         case bestSellingCV:
-            print("test")
-            
+            let product = bestSelling[indexPath.row]
+            performSegue(withIdentifier: "ProductSegue", sender: product)
         default:
             print("nothing")
         }

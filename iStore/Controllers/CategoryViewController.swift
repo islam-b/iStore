@@ -57,9 +57,11 @@ class CategoryViewController: UIViewController {
             let brand = sender as! Brand
             let brandVC = segue.destination as! BrandViewController
             brandVC.brand = brand
+        }else if (segue.identifier == "ProductSegue") {
+            let vc = segue.destination as! ProductViewController
+            vc.product = sender as! Product
         }
     }
-    
     
     
     // MARK: - Styles
@@ -72,7 +74,15 @@ class CategoryViewController: UIViewController {
         searchBtnView.layer.masksToBounds = true
         searchBtnView.tintColor = UIColor.white
         searchBtnView.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
+        searchBtnView.addTarget(self, action: #selector(onSearch), for: .touchUpInside)
         searchBtn.customView = searchBtnView
+    }
+    
+    @objc func onSearch() {
+        let searchVC = storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        searchVC.modalPresentationStyle  = .fullScreen
+        searchVC.modalTransitionStyle = .crossDissolve
+        present(searchVC, animated: true)
     }
 
 }
@@ -107,6 +117,11 @@ extension CategoryViewController : UICollectionViewDataSource, UICollectionViewD
         } else {
             assert(false, "Unexpected element kind")
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let product = products[indexPath.row]
+        performSegue(withIdentifier: "ProductSegue", sender: product)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {

@@ -6,13 +6,14 @@
 //
 
 import UIKit
+import Kingfisher
 
 
 extension UIImageView {
     
     func download(from urlString: String, fallback: UIImage? = nil) {
         if let url = URL(string: urlString) {
-            URLSession.shared.dataTask(with: url) { data, response , error in
+            /*URLSession.shared.dataTask(with: url) { data, response , error in
                 if (data != nil) {
                     DispatchQueue.main.async() {
                         self.image = UIImage(data: data!)
@@ -22,7 +23,17 @@ extension UIImageView {
                         self.image = fallback
                     }
                 }
-            }.resume()
+            }.resume()*/
+            
+            KF.url(url)
+              .onFailure { error in
+                  DispatchQueue.main.async() {
+                      self.image = fallback
+                  }
+              }
+              .set(to: self)
+            
+             
         } else {
             DispatchQueue.main.async() {
                 self.image = fallback
