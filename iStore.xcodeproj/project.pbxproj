@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		54C80536AE710580EDD37BE5 /* Pods_iStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3E45879B4602CC4B018F51 /* Pods_iStore.framework */; };
+		A60397822A8B892A00DA8B46 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60397812A8B892A00DA8B46 /* UIViewExtensions.swift */; };
+		A60397862A8B8A0F00DA8B46 /* ColorItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60397852A8B8A0F00DA8B46 /* ColorItemView.swift */; };
+		A603978A2A8B958F00DA8B46 /* ColorItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A60397892A8B958F00DA8B46 /* ColorItemView.xib */; };
 		A6117F182A8251380018BA42 /* BrandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6117F172A8251380018BA42 /* BrandViewController.swift */; };
 		A6117F1A2A8262E90018BA42 /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6117F192A8262E90018BA42 /* CategoryService.swift */; };
 		A6117F1C2A8266C90018BA42 /* PagedResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6117F1B2A8266C90018BA42 /* PagedResult.swift */; };
@@ -51,6 +54,9 @@
 		5C3E45879B4602CC4B018F51 /* Pods_iStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DB6A0326C79DD2CBA4FDDAF /* Pods-iStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iStore.debug.xcconfig"; path = "Target Support Files/Pods-iStore/Pods-iStore.debug.xcconfig"; sourceTree = "<group>"; };
 		7F8FE99A7DF0CC094D994B78 /* Pods-iStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iStore.release.xcconfig"; path = "Target Support Files/Pods-iStore/Pods-iStore.release.xcconfig"; sourceTree = "<group>"; };
+		A60397812A8B892A00DA8B46 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		A60397852A8B8A0F00DA8B46 /* ColorItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorItemView.swift; sourceTree = "<group>"; };
+		A60397892A8B958F00DA8B46 /* ColorItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorItemView.xib; sourceTree = "<group>"; };
 		A6117F172A8251380018BA42 /* BrandViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandViewController.swift; sourceTree = "<group>"; };
 		A6117F192A8262E90018BA42 /* CategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
 		A6117F1B2A8266C90018BA42 /* PagedResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedResult.swift; sourceTree = "<group>"; };
@@ -125,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				A64FB5A52A8034F400C5113A /* UIImageViewExtensions.swift */,
+				A60397812A8B892A00DA8B46 /* UIViewExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -196,6 +203,8 @@
 				A6331B202A8862D2005BC405 /* SubCategoriesCollectionReusableView.xib */,
 				A6331B232A88649C005BC405 /* SubCategoryViewCell.swift */,
 				A6331B242A88649C005BC405 /* SubCategoryViewCell.xib */,
+				A60397852A8B8A0F00DA8B46 /* ColorItemView.swift */,
+				A60397892A8B958F00DA8B46 /* ColorItemView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -277,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A65F529D2A7EDEBB00EC2680 /* Main.storyboard in Resources */,
+				A603978A2A8B958F00DA8B46 /* ColorItemView.xib in Resources */,
 				A6331B262A88649C005BC405 /* SubCategoryViewCell.xib in Resources */,
 				A65F52A12A7EFBE400EC2680 /* CategoryViewCell.xib in Resources */,
 				A6D50C6B2A81746D00E14D7E /* BrandViewCell.xib in Resources */,
@@ -345,6 +355,7 @@
 				A64FB59F2A7FFA0D00C5113A /* Product.swift in Sources */,
 				A6117F222A82CD290018BA42 /* AuthService.swift in Sources */,
 				A6D59CCE2A80794000D8C25B /* CategoryViewController.swift in Sources */,
+				A60397862A8B8A0F00DA8B46 /* ColorItemView.swift in Sources */,
 				A64FB5A22A7FFAF500C5113A /* BestSellingViewCell.swift in Sources */,
 				A6D50C702A8177B800E14D7E /* BrandsHeader.swift in Sources */,
 				A65F52992A7EC68F00EC2680 /* AccountVerificationViewController.swift in Sources */,
@@ -360,6 +371,7 @@
 				A6F01ABB2A83E50400864E70 /* SearchViewController.swift in Sources */,
 				A6D50C6D2A8175F800E14D7E /* Brand.swift in Sources */,
 				A6331B212A8862D2005BC405 /* SubCategoriesCollectionReusableView.swift in Sources */,
+				A60397822A8B892A00DA8B46 /* UIViewExtensions.swift in Sources */,
 				A6117F182A8251380018BA42 /* BrandViewController.swift in Sources */,
 				A65F52A02A7EFBE400EC2680 /* CategoryViewCell.swift in Sources */,
 				A66367F92A896AFE00FC743C /* ProductViewController.swift in Sources */,
