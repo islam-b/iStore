@@ -9,115 +9,41 @@ import UIKit
 
 class ProductViewController: UIViewController {
 
-    var product: Product?
-    
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var backBtn: UIBarButtonItem!
     
     
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var favBtn: UIBarButtonItem!
     
-    @IBOutlet weak var image: UIImageView!
+    var product : Product?
+    var reviews: [Review] = [
+        Review(user: "Mohamed Islam", comment: "test test test testtesttesttesttesttesttest testtesttest test test", rating: 5),
+        Review(user: "Mohamed Islam", comment: "test", rating: 3),
+        Review(user: "Mohamed Islam", comment: "test", rating: 4),
+        Review(user: "Mohamed Islam", comment: "test", rating: 3)
+    ]
+    
     
     @IBOutlet weak var navBar: UINavigationBar!
-    
-    
-    @IBOutlet weak var sizeField: UITextField!
-    
-    @IBOutlet weak var sizeSelector: UIStackView!
-    
-    @IBOutlet weak var colorSelector: UIStackView!
-    
-    @IBOutlet weak var size: UILabel!
-    
-    @IBOutlet weak var color: UILabel!
-    
-    @IBOutlet weak var colorField: UITextField!
-    
-    var sizes = ["L", "XL", "XXl"]
-    var colors = [UIColor.blue, UIColor.red, UIColor.white]
-    var sizePicker = UIPickerView()
-    var colorPicker = UIPickerView()
 
+
+    @IBOutlet weak var tableView: UITableView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        label.text = product?.label
-        descriptionLabel.text = "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham."
-        let imageUrl = (product?.imageUrl)!
-        image.download(from: imageUrl)
-        
-        color.backgroundColor = colors[0]
-        size.text = sizes[0]
-        
         _applyStyles()
-        _initSizePicker()
-        _initColorPicker()
         
-        sizePicker.selectRow(0, inComponent: 0, animated: true)
-        colorPicker.selectRow(0, inComponent: 0, animated: true)
-    }
-    
-    private func _initSizePicker() {
         
-        //  set the pickers datasource and delegate
-        sizePicker.delegate = self
-        sizePicker.dataSource = self
-
-        let toolBar = UIToolbar()
-        toolBar.barStyle = UIBarStyle.default
-        toolBar.isTranslucent = true
-        toolBar.tintColor = UIColor.systemBlue
-        toolBar.sizeToFit()
-
-        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.donePicker))
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.donePicker))
-
-        toolBar.setItems([ spaceButton, doneButton], animated: false)
-        toolBar.isUserInteractionEnabled = true
+        tableView.register(UINib(nibName: "ProductInfo", bundle: nil), forHeaderFooterViewReuseIdentifier: "ProductInfo")
+        tableView.register(UINib(nibName: "ReviewViewCell", bundle: nil), forCellReuseIdentifier: "ReviewViewCell")
+        tableView.sectionHeaderHeight = UITableView.automaticDimension
+    }
         
-        sizeField.inputView = sizePicker
-        sizeField.inputAccessoryView = toolBar
-    }
-    
-    private func _initColorPicker() {
-        
-        //  set the pickers datasource and delegate
-        colorPicker.delegate = self
-        colorPicker.dataSource = self
-
-        let toolBar = UIToolbar()
-        toolBar.barStyle = UIBarStyle.default
-        toolBar.isTranslucent = true
-        toolBar.tintColor = UIColor.systemBlue
-        toolBar.sizeToFit()
-
-        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.donePicker))
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.donePicker))
-
-        toolBar.setItems([ spaceButton, doneButton], animated: false)
-        toolBar.isUserInteractionEnabled = true
-        
-        colorField.inputView = colorPicker
-        colorField.inputAccessoryView = toolBar
-    }
-    
-    
-    
-    @objc func donePicker() {
-        sizeField.resignFirstResponder()
-        colorField.resignFirstResponder()
-    }
-    
-    
     
     
 
-    @IBAction func onBack(_ sender: Any) {
-        dismiss(animated: true)
-    }
+    
     /*
     // MARK: - Navigation
 
@@ -134,93 +60,80 @@ class ProductViewController: UIViewController {
         navBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
         
-        sizeSelector.layer.borderWidth = 1
-        sizeSelector.layer.borderColor = UIColor.systemGray5.cgColor
-        sizeSelector.layer.cornerRadius = 20
-        sizeSelector.addGestureRecognizer( UITapGestureRecognizer(target: self, action: #selector(self.openSizePicker)))
+        let backBtnView = UIButton(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
+        backBtnView.setTitle("", for: .normal)
+        backBtnView.backgroundColor = UIColor.white
+        backBtnView.layer.cornerRadius = 16.0
+        backBtnView.layer.masksToBounds = true
+        backBtnView.tintColor = UIColor.systemBlue
+        backBtnView.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        backBtnView.addTarget(self, action: #selector(onBack), for: .touchUpInside)
+        backBtn.customView = backBtnView
         
-        colorSelector.layer.borderWidth = 1
-        colorSelector.layer.borderColor = UIColor.systemGray5.cgColor
-        colorSelector.layer.cornerRadius = 20
-        colorSelector.addGestureRecognizer( UITapGestureRecognizer(target: self, action: #selector(self.openColorPicker)))
-        
-        color.layer.masksToBounds = true
-        color.layer.cornerRadius = 8
-        
-        
-    }
-
-    
-    @objc func openSizePicker() {
-        sizeSelector.alpha = 0.25
-        UIView.animate(withDuration: 0.5) {
-            self.sizeSelector.alpha = 1.0
-        }
-        sizeField.becomeFirstResponder()
+        let favBtnView = UIButton(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
+        favBtnView.setTitle("", for: .normal)
+        favBtnView.backgroundColor = UIColor.white
+        favBtnView.layer.cornerRadius = 16.0
+        favBtnView.layer.masksToBounds = true
+        favBtnView.tintColor = UIColor.systemBlue
+        favBtnView.setImage(UIImage(systemName: "star"), for: .normal)
+//        favBtnView.addTarget(self, action: #selector(onBack), for: .touchUpInside)
+        favBtn.customView = favBtnView
     }
     
-    @objc func openColorPicker() {
-        colorSelector.alpha = 0.25
-        UIView.animate(withDuration: 0.5) {
-            self.colorSelector.alpha = 1.0
-        }
-        colorField.becomeFirstResponder()
+    @objc func onBack() {
+        dismiss(animated: true)
     }
+    
+    
+    
     
 }
 
 
-extension ProductViewController:  UIPickerViewDataSource, UIPickerViewDelegate {
+extension ProductViewController : UITableViewDataSource, UITableViewDelegate {
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    
+    
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if (pickerView == sizePicker) {
-            return sizes.count
-        } else if (pickerView == colorPicker) {
-            return colors.count
-        } else {
-            return 0
-        }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return reviews.count
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if (pickerView == sizePicker) {
-            return sizes[row]
-        } else if (pickerView == colorPicker) {
-            return String(describing: colors[row])
-        } else {
-            return nil
-        }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: "ReviewViewCell", for: indexPath) as! ReviewViewCell
+        cell.set(reviews[indexPath.row])
+        return cell
     }
     
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        let colorItemView : ColorItemView = UIView.fromNib()
-        if (pickerView == colorPicker) {
-            colorItemView.color.backgroundColor = colors[row]
-            colorItemView.label.text = String(describing: colors[row])
-        } else  if (pickerView == sizePicker ) {
-            colorItemView.color.backgroundColor = UIColor.clear
-            colorItemView.label.text = sizes[row]
-        }
-        return colorItemView
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        var header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ProductInfo") as! ProductInfo
+        header.set(self.product)
+        header.sizeToFit()
+        return header
     }
+    
      
-    
-    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        return 40
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if (pickerView == sizePicker) {
-            size.text = sizes[row]
-        } else if (pickerView == colorPicker) {
-            color.backgroundColor = colors[row]
-        }
+        return UITableView.automaticDimension
     }
+    
+   
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        var header = self.tableView(tableView, viewForHeaderInSection: section) as! ProductInfo
+        return header.height
+    }
+    
+    
+    
     
     
 }
