@@ -44,15 +44,20 @@ class ProductViewController: UIViewController {
     
 
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if (segue.identifier == "WriteReviewSegue") {
+            let vc = segue.destination as! WriteReviewViewController
+            
+            vc.product = self.product
+        }
     }
-    */
+    
     
     private func _applyStyles() {
         navBar.setBackgroundImage(UIImage(), for: .default) //UIImage.init(named: "transparent.png")
@@ -115,6 +120,7 @@ extension ProductViewController : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         var header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ProductInfo") as! ProductInfo
         header.set(self.product)
+        header.delegate = self
         header.sizeToFit()
         return header
     }
@@ -135,5 +141,13 @@ extension ProductViewController : UITableViewDataSource, UITableViewDelegate {
     
     
     
+    
+}
+
+
+extension ProductViewController: ProductInfoDelegate {
+    func onWriteReview() {
+        performSegue(withIdentifier: "WriteReviewSegue", sender: nil)
+    }
     
 }

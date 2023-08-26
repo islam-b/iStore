@@ -10,6 +10,7 @@ import UIKit
 class ProductInfo: UITableViewHeaderFooterView {
 
     var product: Product?
+    var delegate: ProductInfoDelegate?
     
     @IBOutlet weak var container: UIView!
     
@@ -161,6 +162,13 @@ class ProductInfo: UITableViewHeaderFooterView {
         colorField.becomeFirstResponder()
     }
     
+    
+    
+    @IBAction func writeReview(_ sender: Any) {
+        delegate?.onWriteReview()
+    }
+    
+     
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -226,4 +234,10 @@ extension ProductInfo:  UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     
+    
+}
+
+
+protocol ProductInfoDelegate {
+    func onWriteReview() -> Void
 }

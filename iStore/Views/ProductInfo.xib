@@ -15,7 +15,7 @@
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <view contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cqv-eC-6fE">
-                    <rect key="frame" x="0.0" y="0.0" width="393" height="771"/>
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="785"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cQQ-qY-Ey4">
                             <rect key="frame" x="0.0" y="0.0" width="393" height="500"/>
@@ -24,7 +24,7 @@
                             </constraints>
                         </imageView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="r9F-vp-K1v">
-                            <rect key="frame" x="16" y="524" width="361" height="247"/>
+                            <rect key="frame" x="16" y="524" width="361" height="261"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yKR-la-eDc">
                                     <rect key="frame" x="0.0" y="0.0" width="361" height="33.666666666666664"/>
@@ -106,14 +106,27 @@
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1hY-Gz-0Kg">
-                                    <rect key="frame" x="0.0" y="218.66666666666663" width="361" height="28.333333333333343"/>
+                                    <rect key="frame" x="0.0" y="218.66666666666663" width="361" height="42.333333333333314"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reviews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vg7-LZ-gIQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="361" height="20.333333333333332"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Uea-za-nCx">
+                                            <rect key="frame" x="0.0" y="0.0" width="361" height="34.333333333333336"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reviews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vg7-LZ-gIQ">
+                                                    <rect key="frame" x="0.0" y="6.9999999999999982" width="65.333333333333329" height="20.333333333333329"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nDG-2J-6R5">
+                                                    <rect key="frame" x="242.66666666666671" y="0.0" width="118.33333333333334" height="34.333333333333336"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="Write review"/>
+                                                    <connections>
+                                                        <action selector="writeReview:" destination="sHm-4h-vTO" eventType="touchUpInside" id="Y2C-e7-m07"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
                                     </subviews>
                                     <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="8" right="0.0"/>
                                 </stackView>
