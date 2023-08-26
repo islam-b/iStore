@@ -9,6 +9,9 @@ import UIKit
 
 class BrandViewCell: UICollectionViewCell {
 
+    static let identifier = String(describing: BrandViewCell.self)
+
+    
     @IBOutlet weak var container: UIView!
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var productsCount: UILabel!

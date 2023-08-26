@@ -9,6 +9,8 @@ import UIKit
 
 class ProductInfo: UITableViewHeaderFooterView {
 
+    static let identifier = String(describing: ProductInfo.self)
+
     var product: Product?
     var delegate: ProductInfoDelegate?
     
@@ -84,7 +86,7 @@ class ProductInfo: UITableViewHeaderFooterView {
         let toolBar = UIToolbar()
         toolBar.barStyle = UIBarStyle.default
         toolBar.isTranslucent = true
-        toolBar.tintColor = UIColor.systemBlue
+        toolBar.tintColor = UIColor(named: "AccentColor")
         toolBar.sizeToFit()
 
         let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.donePicker))
@@ -107,7 +109,7 @@ class ProductInfo: UITableViewHeaderFooterView {
         let toolBar = UIToolbar()
         toolBar.barStyle = UIBarStyle.default
         toolBar.isTranslucent = true
-        toolBar.tintColor = UIColor.systemBlue
+        toolBar.tintColor = UIColor(named: "AccentColor")
         toolBar.sizeToFit()
 
         let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.donePicker))

@@ -9,6 +9,8 @@ import UIKit
 
 class SubCategoryViewCell: UICollectionViewCell {
 
+    static let identifier = String(describing: SubCategoryViewCell.self)
+
     @IBOutlet weak var label: UILabel!
     
     override func awakeFromNib() {

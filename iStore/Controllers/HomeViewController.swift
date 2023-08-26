@@ -61,8 +61,8 @@ class HomeViewController: UIViewController, CategoryServiceDelegate {
     
     
     func registerViews() {
-        categoriesCV.register(UINib(nibName: "CategoryViewCell", bundle: nil), forCellWithReuseIdentifier: "CategoryViewCell")
-        bestSellingCV.register(UINib(nibName: "BestSellingViewCell", bundle: nil), forCellWithReuseIdentifier: "BestSellingViewCell")
+        categoriesCV.register(UINib(nibName: CategoryViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: CategoryViewCell.identifier)
+        bestSellingCV.register(UINib(nibName: BestSellingViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: BestSellingViewCell.identifier)
     }
     
     
@@ -123,11 +123,11 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch (collectionView) {
         case categoriesCV :
-            let viewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryViewCell", for: indexPath) as! CategoryViewCell
+            let viewCell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryViewCell.identifier, for: indexPath) as! CategoryViewCell
             viewCell.set((categories?.items[indexPath.row])!)
             return viewCell
         case bestSellingCV:
-            let viewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "BestSellingViewCell", for: indexPath) as! BestSellingViewCell
+            let viewCell = collectionView.dequeueReusableCell(withReuseIdentifier: BestSellingViewCell.identifier, for: indexPath) as! BestSellingViewCell
             viewCell.set(bestSelling[indexPath.row])
             return viewCell
         

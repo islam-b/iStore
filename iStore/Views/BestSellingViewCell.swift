@@ -8,6 +8,9 @@
 import UIKit
 
 class BestSellingViewCell: UICollectionViewCell {
+    
+    static let identifier = String(describing: BestSellingViewCell.self)
+
 
     @IBOutlet weak var imageContainer: UIView!
     

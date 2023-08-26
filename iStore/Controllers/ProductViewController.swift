@@ -35,8 +35,8 @@ class ProductViewController: UIViewController {
         _applyStyles()
         
         
-        tableView.register(UINib(nibName: "ProductInfo", bundle: nil), forHeaderFooterViewReuseIdentifier: "ProductInfo")
-        tableView.register(UINib(nibName: "ReviewViewCell", bundle: nil), forCellReuseIdentifier: "ReviewViewCell")
+        tableView.register(UINib(nibName: ProductInfo.identifier, bundle: nil), forHeaderFooterViewReuseIdentifier: ProductInfo.identifier)
+        tableView.register(UINib(nibName: ReviewViewCell.identifier, bundle: nil), forCellReuseIdentifier: ReviewViewCell.identifier)
         tableView.sectionHeaderHeight = UITableView.automaticDimension
     }
         
@@ -70,7 +70,7 @@ class ProductViewController: UIViewController {
         backBtnView.backgroundColor = UIColor.white
         backBtnView.layer.cornerRadius = 16.0
         backBtnView.layer.masksToBounds = true
-        backBtnView.tintColor = UIColor.systemBlue
+        backBtnView.tintColor = UIColor(named: "AccentColor")
         backBtnView.setImage(UIImage(systemName: "chevron.left"), for: .normal)
         backBtnView.addTarget(self, action: #selector(onBack), for: .touchUpInside)
         backBtn.customView = backBtnView
@@ -80,7 +80,8 @@ class ProductViewController: UIViewController {
         favBtnView.backgroundColor = UIColor.white
         favBtnView.layer.cornerRadius = 16.0
         favBtnView.layer.masksToBounds = true
-        favBtnView.tintColor = UIColor.systemBlue
+        favBtnView.tintColor = UIColor(named: "AccentColor")
+
         favBtnView.setImage(UIImage(systemName: "star"), for: .normal)
 //        favBtnView.addTarget(self, action: #selector(onBack), for: .touchUpInside)
         favBtn.customView = favBtnView
@@ -111,14 +112,14 @@ extension ProductViewController : UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "ReviewViewCell", for: indexPath) as! ReviewViewCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: ReviewViewCell.identifier, for: indexPath) as! ReviewViewCell
         cell.set(reviews[indexPath.row])
         return cell
     }
     
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        var header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ProductInfo") as! ProductInfo
+        var header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ProductInfo.identifier) as! ProductInfo
         header.set(self.product)
         header.delegate = self
         header.sizeToFit()

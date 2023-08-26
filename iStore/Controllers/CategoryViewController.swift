@@ -43,8 +43,8 @@ class CategoryViewController: UIViewController {
     }
     
     private func _registerViews() {
-        productsCV.register(UINib(nibName: "BestSellingViewCell", bundle: nil), forCellWithReuseIdentifier: "ProductViewCell")
-        productsCV.register(UINib(nibName: "BrandsHeader", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "BrandsHeader")
+        productsCV.register(UINib(nibName: BestSellingViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: "ProductViewCell")
+        productsCV.register(UINib(nibName: BrandsHeader.identifier, bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: BrandsHeader.identifier)
     }
 
     
@@ -69,7 +69,7 @@ class CategoryViewController: UIViewController {
     private func _applyStyles() {
         let searchBtnView = UIButton(frame: CGRect(x: 0, y: 0, width: 36, height: 36))
         searchBtnView.setTitle("", for: .normal)
-        searchBtnView.backgroundColor = UIColor.systemBlue
+        searchBtnView.backgroundColor = UIColor(named: "AccentColor")
         searchBtnView.layer.cornerRadius = 18.0
         searchBtnView.layer.masksToBounds = true
         searchBtnView.tintColor = UIColor.white
@@ -110,7 +110,7 @@ extension CategoryViewController : UICollectionViewDataSource, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if (kind == UICollectionView.elementKindSectionHeader) {
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "BrandsHeader", for: indexPath) as! BrandsHeader
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: BrandsHeader.identifier, for: indexPath) as! BrandsHeader
             headerView.loadData(brands: brands)
             headerView.delegate = self
             return headerView

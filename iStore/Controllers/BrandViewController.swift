@@ -46,14 +46,14 @@ class BrandViewController: UIViewController {
     }
     
     private func _registerViews() {
-        productsCV.register(UINib(nibName: "BestSellingViewCell", bundle: nil), forCellWithReuseIdentifier: "BestSellingViewCell")
-        productsCV.register(UINib(nibName: "SubCategoriesCollectionReusableView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SubCategoriesCollectionReusableView")
+        productsCV.register(UINib(nibName: BestSellingViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: BestSellingViewCell.identifier)
+        productsCV.register(UINib(nibName: SubCategoriesCollectionReusableView.identifier, bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SubCategoriesCollectionReusableView.identifier)
     }
     
     private func _applyStyles() {
         let searchBtnView = UIButton(frame: CGRect(x: 0, y: 0, width: 36, height: 36))
         searchBtnView.setTitle("", for: .normal)
-        searchBtnView.backgroundColor = UIColor.systemBlue
+        searchBtnView.backgroundColor = UIColor(named: "AccentColor")
         searchBtnView.layer.cornerRadius = 18.0
         searchBtnView.layer.masksToBounds = true
         searchBtnView.tintColor = UIColor.white
@@ -95,7 +95,7 @@ extension BrandViewController : UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BestSellingViewCell", for: indexPath) as! BestSellingViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BestSellingViewCell.identifier, for: indexPath) as! BestSellingViewCell
         cell.set(products[indexPath.row])
         cell.width.constant = getCellWidth()
         cell.height.constant = getCellHeight()
@@ -109,7 +109,7 @@ extension BrandViewController : UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if (kind == UICollectionView.elementKindSectionHeader) {
-            let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SubCategoriesCollectionReusableView", for: indexPath) as! SubCategoriesCollectionReusableView
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SubCategoriesCollectionReusableView.identifier, for: indexPath) as! SubCategoriesCollectionReusableView
             header.set(subcategories: subCategories)
             return header
         } else {

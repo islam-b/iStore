@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -54,7 +55,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SKH-6j-xoq">
                                         <rect key="frame" x="0.0" y="50.666666666666686" width="37" height="25.333333333333329"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                        <color key="textColor" systemColor="linkColor"/>
+                                        <color key="textColor" name="AccentColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -94,9 +95,9 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <namedColor name="AccentColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

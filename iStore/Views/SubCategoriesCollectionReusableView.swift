@@ -9,6 +9,8 @@ import UIKit
 
 class SubCategoriesCollectionReusableView: UICollectionReusableView {
 
+    static let identifier = String(describing: SubCategoriesCollectionReusableView.self)
+
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -18,7 +20,7 @@ class SubCategoriesCollectionReusableView: UICollectionReusableView {
         super.awakeFromNib()
         // Initialization code
         
-        collectionView.register(UINib(nibName: "SubCategoryViewCell", bundle: nil), forCellWithReuseIdentifier: "SubCategoryViewCell")
+        collectionView.register(UINib(nibName: SubCategoryViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: SubCategoryViewCell.identifier)
         collectionView.delegate = self
     }
     
@@ -38,7 +40,7 @@ extension SubCategoriesCollectionReusableView: UICollectionViewDataSource, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SubCategoryViewCell", for: indexPath) as! SubCategoryViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SubCategoryViewCell.identifier, for: indexPath) as! SubCategoryViewCell
         cell.set(category: subcategories[indexPath.row])
         if (cell.isSelected) {
             cell.select()

@@ -9,6 +9,8 @@ import UIKit
 
 class ReviewViewCell: UITableViewCell {
 
+    static let identifier = String(describing: ReviewViewCell.self)
+
     
     @IBOutlet weak var userLabel: UILabel!
     

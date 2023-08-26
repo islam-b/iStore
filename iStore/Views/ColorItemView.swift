@@ -9,6 +9,7 @@ import UIKit
 
 class ColorItemView: UIView {
 
+    
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var color: UIView!
     

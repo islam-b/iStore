@@ -17,6 +17,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DoF-v6-Zmd">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="AccentColor"/>
                     </navigationBar>
                     <connections>
                         <segue destination="iZH-81-4jX" kind="relationship" relationship="rootViewController" id="wjO-Kc-ER2"/>
@@ -60,7 +61,7 @@
                                                         <buttonConfiguration key="configuration" style="plain">
                                                             <imageReference key="image" image="camera.fill" catalog="system" symbolScale="medium"/>
                                                             <backgroundConfiguration key="background" cornerRadius="54">
-                                                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                                                <color key="backgroundColor" name="AccentColor"/>
                                                             </backgroundConfiguration>
                                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </buttonConfiguration>
@@ -236,6 +237,7 @@
                                     </label>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yvu-uO-bKk">
                                         <rect key="frame" x="210.33333333333337" y="15.000000000000004" width="158.66666666666663" height="34.333333333333343"/>
+                                        <color key="tintColor" name="AccentColor"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" image="line.3.horizontal.decrease.circle.fill" catalog="system" imagePlacement="leading" title="FILTER" imagePadding="8" buttonSize="medium"/>
                                         <connections>
@@ -287,6 +289,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Filter" leftItemsSupplementBackButton="YES" id="HyA-Fp-wB0">
                         <barButtonItem key="leftBarButtonItem" image="chevron.down" catalog="system" id="2tb-xz-kYs">
+                            <color key="tintColor" name="AccentColor"/>
                             <connections>
                                 <action selector="dismiss:" destination="wvC-fa-DmG" id="GHT-cA-UI5"/>
                             </connections>
@@ -364,6 +367,7 @@
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="1fe-yT-6CZ">
                                                                 <rect key="frame" x="8" y="8.9999999999999982" width="32" height="30.666666666666664"/>
+                                                                <color key="tintColor" name="AccentColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="32" id="Idd-Rh-ode"/>
                                                                     <constraint firstAttribute="height" constant="32" id="sNE-Vj-nXD"/>
@@ -405,6 +409,7 @@
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="creditcard" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ygl-Rp-Bwo">
                                                                 <rect key="frame" x="8" y="9.9999999999999982" width="32" height="28"/>
+                                                                <color key="tintColor" name="AccentColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="32" id="88Q-pS-lge"/>
                                                                     <constraint firstAttribute="width" constant="32" id="qLa-FO-iqK"/>
@@ -446,6 +451,7 @@
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="GED-9Z-Cz5">
                                                                 <rect key="frame" x="8" y="8.9999999999999964" width="32" height="30.333333333333332"/>
+                                                                <color key="tintColor" name="AccentColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="32" id="fNw-xZ-XCW"/>
                                                                     <constraint firstAttribute="width" constant="32" id="waO-tQ-yjY"/>
@@ -637,6 +643,7 @@
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QuV-Px-RkP">
                                         <rect key="frame" x="207.33333333333337" y="18.000000000000004" width="149.66666666666663" height="50.333333333333343"/>
+                                        <color key="tintColor" name="AccentColor"/>
                                         <buttonConfiguration key="configuration" style="filled" title="ADD TO CART" buttonSize="large"/>
                                     </button>
                                 </subviews>
@@ -786,6 +793,7 @@
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f2K-cX-P0s">
                                         <rect key="frame" x="0.0" y="305.66666666666669" width="345" height="34.333333333333314"/>
+                                        <color key="tintColor" name="AccentColor"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Send"/>
                                     </button>
@@ -828,6 +836,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" itemPositioning="fill" id="fBx-41-oNV">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="AccentColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="Y6W-OH-hqX" kind="relationship" relationship="viewControllers" id="gV3-8h-cwP"/>
@@ -896,7 +905,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="C1B-tQ-aeB"/>
+        <segue reference="dwt-bW-eZr"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="camera.fill" catalog="system" width="128" height="93"/>
@@ -913,16 +922,13 @@
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="star" catalog="system" width="128" height="116"/>
         <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

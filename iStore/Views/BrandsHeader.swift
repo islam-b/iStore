@@ -9,6 +9,9 @@ import UIKit
 
 class BrandsHeader: UICollectionReusableView {
 
+    static let identifier = String(describing: BrandsHeader.self)
+
+    
     private var _brands : [Brand] = []
     
     var delegate: BrandsHeaderDelegate?
@@ -18,7 +21,7 @@ class BrandsHeader: UICollectionReusableView {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        brandsCV.register(UINib(nibName: "BrandViewCell", bundle: nil), forCellWithReuseIdentifier: "BrandViewCell")
+        brandsCV.register(UINib(nibName: BrandViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: BrandViewCell.identifier)
     }
     
     func loadData(brands : [Brand]) {
@@ -44,7 +47,7 @@ extension BrandsHeader : UICollectionViewDataSource, UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BrandViewCell", for: indexPath) as! BrandViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BrandViewCell.identifier, for: indexPath) as! BrandViewCell
         cell.set(_brands[indexPath.row])
         return cell
     }
